@@ -46,7 +46,7 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
-        <form action="AlumnosServ"  method="Post">
+        <form action="GruposAlumnosServ"  method="Post">
              <input  type="hidden" name="codi" id="codi" value="${codi}"/>
             <div class="container">
                 
@@ -55,7 +55,7 @@
                     <h2>CRUD de Lugares Acceso</h2>
                     <div class="form-group">
                         <label for="nomb">Alumnos: </label>
-                        <select name="select" class="form-control" id="select">
+                        <select name="cmbAlumno" class="form-control" id="cmbAlumno">
            <jsp:useBean id="beanUnidadCtrl" class="com.sv.udb.controlador.AlumnosCtrl" scope="page"/>
                                         <c:forEach items="${beanUnidadCtrl.ConsTodo()}" var="fila">
                                             <c:choose>
@@ -68,9 +68,13 @@
                                             </c:choose>
                                         </c:forEach>
                                         </select>
-                                        
+                                 
                                         <label for="nomb">Grupos: </label>
-                        <select name="select" class="form-control" id="select">
+                      
+                                        <div class="row">
+                                        <div class="col-lg-6">
+    <div class="input-group">
+       <select name="cmbGrupo" class="form-control"  id="cmbGrupo">
            <jsp:useBean id="beanUnidadCtrl2" class="com.sv.udb.controlador.GruposCtrl" scope="page"/>
                                         <c:forEach items="${beanUnidadCtrl2.ConsTodo()}" var="fila">
                                             <c:choose>
@@ -83,30 +87,35 @@
                                             </c:choose>
                                         </c:forEach>
                                         </select>
+      <span class="input-group-btn">
+          
+          
+        <input  class="btn btn-default" name="lugaAcceBton"type="submit" value="Alumnos" />
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+                                        </div>
+                                        
                     </div>
                     <div class="btn-group">
                         <input type="submit" name="lugaAcceBton" value="Guardar" class="btn btn-default" />
-                        <input type="submit" name="lugaAcceBton" value="Consultar" class="btn btn-default" />
-                        <input type="submit" name="lugaAcceBton" value="Modificar" class="btn btn-default" />
-                        <input type="submit" name="lugaAcceBton" value="Eliminar" class="btn btn-default" />
                     </div>
                 </div>
                 <div class="panel panel-default"style="padding: 15px;">
-                    <jsp:useBean id="AlumnosCtrl" class="com.sv.udb.controlador.AlumnosCtrl" scope="page"/>
+                    <jsp:useBean id="AlumnosCtrl" class="com.sv.udb.controlador.GruposAlumnosCtrl" scope="page"/>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>Nombre</th>
                                 <th>Fecha Alta</th>
-                                 <th>Seleccione</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${AlumnosCtrl.ConsTodo()}" var="fila">
                                 <tr>
-                                    <td><c:out value="${fila.nombAlum}"></c:out></td>
-                                    <td><c:out value="${fila.apelAlum}"></c:out></td>
-                                    <td> <input type="radio" name="codiRadi" value="${fila.codiAlum}"/></td>
+                                   
+                                    <td><c:out value="${fila.codiAlum.nombAlum}"></c:out></td>
+                                    <td><c:out value="${fila.codiGrup.nombGrup}"></c:out></td>
                                 </tr>
                             </c:forEach>
                         </tbody>

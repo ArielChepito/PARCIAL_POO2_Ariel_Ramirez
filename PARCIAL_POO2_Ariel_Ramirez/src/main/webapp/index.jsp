@@ -12,9 +12,9 @@
     <head>
         <title>Lugares</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'/>
-        <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-        <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'/>
+        <script type='text/javascript' src='webjars/jquery/2.1.4/jquery.min.js'></script>
+        <script type='text/javascript' src='webjars/bootstrap/3.2.0/js/bootstrap.min.js'></script>
         
     </head>
     <body>
@@ -74,8 +74,8 @@
                     </div>
                     <div class="btn-group">
                         <input type="submit" name="lugaAcceBton" value="Guardar" class="btn btn-default" />
-                        <input type="submit" name="lugaAcceBton" value="Consultar" class="btn btn-default" />
-                        <input type="submit" name="lugaAcceBton" value="Modificar" class="btn btn-default" />
+                       <!-- <input type="submit" name="lugaAcceBton" value="Consultar" class="btn btn-default" />
+                        <input type="submit" name="lugaAcceBton" value="Modificar" class="btn btn-default" />-->
                         <input type="submit" name="lugaAcceBton" value="Eliminar" class="btn btn-default" />
                     </div>
                 </div>
