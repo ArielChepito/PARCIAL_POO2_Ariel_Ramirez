@@ -18,6 +18,7 @@ import javax.naming.NamingException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +36,7 @@ import net.sf.jasperreports.engine.util.JRLoader;
  * @author AdminDesa
  */
 @WebServlet(name = "VisorReporte", urlPatterns = {"/VisorReporte"})
+
 public class VisorReporte extends HttpServlet {
 
     /**
@@ -46,24 +48,23 @@ public class VisorReporte extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)  {
         String nombRepo = (String) request.getParameter("nombRepo");
-        String pathRepo = request.getServletContext().getRealPath("/reportes/" + nombRepo + ".jasper");
-      
-     
+        String pathRepo = request.getServletContext().getRealPath("/reportes/" + nombRepo + ".jasper");               
         
         try
         {
+            //Conexion            
+        Connection cn = new conexion().getCn();           
+            
             //PARAMETROS
-            Map params = new HashMap();
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
-            EntityManager em = emf.createEntityManager();
-           params.put(JRJpaQueryExecuterFactory.PARAMETER_JPA_ENTITY_MANAGER, em);
-           
+            Map params = new HashMap();            
+            params.put("CODIGO", 1);            
             //CARGA DEL REPORTE
             JasperReport jasperReport = (JasperReport) JRLoader.loadObjectFromFile(pathRepo);
-            JasperPrint print = JasperFillManager.fillReport(jasperReport, params);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, params,cn);
             byte[] bytes = JasperExportManager.exportReportToPdf(print);
             OutputStream outStream = response.getOutputStream();
             try {
+                
                 response.addHeader("Content-disposition",
                         "inline;filename=" + nombRepo);
                 response.setContentType("application/pdf");

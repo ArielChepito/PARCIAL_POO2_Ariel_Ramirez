@@ -3,7 +3,9 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="CODIGO" class="java.lang.String"/>
+	<parameter name="CODIGO" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      alumnos.`codi_alum` AS alumnos_codi_alum,
@@ -66,7 +68,7 @@ WHERE grupos_alumnos.codi_grup = $P{CODIGO}]]>
 					<text><![CDATA[Add a description here]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="326" y="66" width="100" height="20" uuid="4d8daae6-df91-4113-bc02-2a3966ce9c1b"/>
+					<reportElement x="353" y="66" width="100" height="20" uuid="59c6d8d0-57b6-4826-aea2-81aa3ea40730"/>
 					<textFieldExpression><![CDATA[$P{CODIGO}]]></textFieldExpression>
 				</textField>
 			</frame>

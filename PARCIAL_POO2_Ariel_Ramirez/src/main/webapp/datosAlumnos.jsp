@@ -46,7 +46,7 @@
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
           </nav>
-        <form action="scripts/reporte1.jsp"  method="Post" target="_blank>
+        <form action="VisorReporte?nombRepo=alumnosgrupos"  method="Post" target="_blank>
              <input  type="hidden" name="codi" id="codi" value="${codi}"/>
             <div class="container">
                                
