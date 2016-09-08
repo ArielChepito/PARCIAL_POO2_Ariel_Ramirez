@@ -9,13 +9,15 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import javax.sql.DataSource;
 import javax.annotation.Resource;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 /**
  *
  * @author Ariel
  */
 public class conexion {
-    @Resource(mappedName = "jdbc/ParcialPool")
+  
     private DataSource ds;
     private Connection cn=null;
     
@@ -23,8 +25,8 @@ public class conexion {
     {
         return ds;
     }
-    public Connection getCn() throws SQLException{
-              
+    public Connection getCn() throws SQLException, NamingException{
+              ds=(DataSource) new InitialContext().lookup("jdbc/ParcialPool");
             cn = ds.getConnection();
          return cn;
         
